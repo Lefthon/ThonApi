@@ -1,43 +1,68 @@
 {
-  "name": "Raol Api'S",
-  "version": "v1.0.0",
-  "description": "Simple and easy to use API.",
+  "name": "ThonAPI",
+  "version": "1.1.0",
+  "description": "🔥 Simple, Fast, and Developer-Friendly Free API Platform",
   "maintenance": {
     "enabled": false,
-    "gifUrl": "https://raw.githubusercontent.com/raolbyte/xyz/refs/heads/main/public/maintenance.gif"
+    "gifUrl": "https://raw.githubusercontent.com/raolbyte/xyz/refs/heads/main/public/maintenance.gif",
+    "message": "We are currently performing scheduled maintenance. Please check back later."
   },
   "bannerImage": "/src/banner.jpg",
   "previewImage": "/src/preview.png",
   "header": {
-    "status": "Active!"
+    "status": "✅ Online & Stable"
   },
   "apiSettings": {
-    "creator": "VGX Team",
-    "apikey": ["vgx-team"]
+    "creator": "ThonAPI Team",
+    "apikey": ["thonapi-default-key", "vgx-team"]
   },
   "categories": [
     {
-      "name": "Artificial Intelligence",
+      "name": "🤖 Artificial Intelligence",
       "items": [
         {
           "name": "LuminAI",
-          "desc": "Talk with luminai - Advanced AI assistant",
+          "desc": "Advanced AI assistant for chatting and quick responses",
           "path": "/ai/luminai?text=",
           "status": "ready",
           "params": {
-            "text": "Text for luminai to respond to"
-          }
+            "text": "Text for LuminAI to respond to (required)"
+          },
+          "example": "/ai/luminai?text=Hello"
         }
       ]
     },
     {
-      "name": "Random Images",
+      "name": "🎴 Random Images",
       "items": [
         {
           "name": "Blue Archive",
-          "desc": "Get random Blue Archive character images",
+          "desc": "Get random character images from Blue Archive anime",
           "path": "/random/ba",
-          "status": "ready"
+          "status": "ready",
+          "example": "/random/ba"
+        },
+        {
+          "name": "Waifu",
+          "desc": "Fetch a random waifu image",
+          "path": "/random/waifu",
+          "status": "ready",
+          "example": "/random/waifu"
+        }
+      ]
+    },
+    {
+      "name": "📚 Utility",
+      "items": [
+        {
+          "name": "Base64 Encode",
+          "desc": "Convert text to Base64 format",
+          "path": "/tools/base64?text=",
+          "status": "ready",
+          "params": {
+            "text": "Text to encode"
+          },
+          "example": "/tools/base64?text=hello"
         }
       ]
     }
