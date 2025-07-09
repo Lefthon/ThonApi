@@ -61,7 +61,7 @@
           "status": "ready",
           "params": {
             "text": "Text to encode"
-        }
+}
       ]
     }
   ]
