@@ -27,8 +27,7 @@
           "status": "ready",
           "params": {
             "text": "Text for LuminAI to respond to (required)"
-          },
-          
+          }
         }
       ]
     },
@@ -39,15 +38,13 @@
           "name": "Blue Archive",
           "desc": "Get random character images from Blue Archive anime",
           "path": "/random/ba",
-          "status": "ready",
-          
+          "status": "ready"
         },
         {
           "name": "Waifu",
           "desc": "Fetch a random waifu image",
           "path": "/random/waifu",
-          "status": "ready",
-          
+          "status": "ready"
         }
       ]
     },
@@ -61,6 +58,7 @@
           "status": "ready",
           "params": {
             "text": "Text to encode"
+          }
         }
       ]
     }
