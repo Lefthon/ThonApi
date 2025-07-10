@@ -1711,60 +1711,7 @@ function displayErrorState(message = "Failed to load content") {
 function toggleNoResultsMessage(show) {
   let message = document.getElementById("noResultsMessage");
   
-  if (show && !message) {
-    message = document.createElement("div");
-    message.id = "noResultsMessage";
-    message.className = "no-results text-center py-4";
-    message.innerHTML = `
-      <i class="fas fa-search fa-3x mb-3"></i>
-      <h4>No results found</h4>
-      <p>Try different search terms</p>
-    `;
-    DOM.apiContent.appendChild(message);
-  } else if (!show && message) {
-    message.remove();
-  }
-}
 
-// ======================
-// Notification Functions
-// ======================
-
-async function loadNotifications() {
-  try {
-    const response = await fetch(`${CONFIG.API_BASE_URL}/notifications`);
-    if (!response.ok) throw new Error("Failed to load notifications");
-    STATE.notifications = await response.json();
-  } catch (error) {
-    console.error("Error loading notifications:", error);
-    STATE.notifications = [];
-  }
-}
-
-function updateNotificationBadge() {
-  const unreadCount = STATE.notifications.filter(n => !n.read).length;
-  
-  if (unreadCount > 0) {
-    DOM.notificationBadge.textContent = unreadCount;
-    DOM.notificationBadge.classList.add("active");
-  } else {
-    DOM.notificationBadge.classList.remove("active");
-  }
-}
-
-// Initialize notification bell
-DOM.notificationBell.addEventListener("click", () => {
-  const unread = STATE.notifications.filter(n => !n.read);
-  
-  if (unread.length > 0) {
-    showToast(`You have ${unread.length} unread notifications`, "info");
-    // Mark as read (in a real app, you would update the server)
-    STATE.notifications.forEach(n => n.read = true);
-    updateNotificationBadge();
-  } else {
-    showToast("No new notifications", "info");
-  }
-});
 
   // Run main initialization
   init()
