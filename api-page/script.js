@@ -768,17 +768,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Set modal title, description, and endpoint safely
   if (DOM.modal.label) DOM.modal.label.textContent = apiData.name || "Unnamed API"
   if (DOM.modal.desc) DOM.modal.desc.textContent = apiData.desc || "No description"
-  if (DOM.modal.endpoint) DOM.modal.endpoint.textContent = `${window.location.origin}${apiData.path?.split("?")[0] || ""}`
+  if (DOM.modal.endpoint) DOM.modal.endpoint.textContent = `${window.location.origin}${apiData.path.split("?")[0] || ""}`
   if (DOM.modal.content) DOM.modal.content.innerHTML = ""
 
   // Hide spinner, response container
-  DOM.modal.spinner?.classList.add("d-none")
-  DOM.modal.content?.classList.add("d-none")
-  DOM.modal.container?.classList.add("d-none")
-  DOM.modal.endpoint?.classList.remove("d-none")
+  DOM.modal.spinner.classList.add("d-none")
+  DOM.modal.content.classList.add("d-none")
+  DOM.modal.container.classList.add("d-none")
+  DOM.modal.endpoint.classList.remove("d-none")
 
   // Clear inputs
-  DOM.modal.queryInputContainer?.innerHTML = ""
+  DOM.modal.queryInputContainer.innerHTML = ""
   if (DOM.modal.submitBtn) {
     DOM.modal.submitBtn.classList.add("d-none")
     DOM.modal.submitBtn.disabled = true
