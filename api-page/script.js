@@ -760,40 +760,53 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const setupModalForApi = (apiData) => {
-    DOM.modal.label.textContent = apiData.name
-    DOM.modal.desc.textContent = apiData.desc
-    DOM.modal.content.innerHTML = ""
-    DOM.modal.endpoint.textContent = `${window.location.origin}${apiData.path.split("?")[0]}`
+  if (!apiData || !DOM.modal || !DOM.modal.element) {
+    console.warn("Modal or apiData not ready")
+    return
+  }
 
-    DOM.modal.spinner.classList.add("d-none")
-    DOM.modal.content.classList.add("d-none")
-    DOM.modal.container.classList.add("d-none")
-    DOM.modal.endpoint.classList.remove("d-none")
+  // Set modal title, description, and endpoint safely
+  if (DOM.modal.label) DOM.modal.label.textContent = apiData.name || "Unnamed API"
+  if (DOM.modal.desc) DOM.modal.desc.textContent = apiData.desc || "No description"
+  if (DOM.modal.endpoint) DOM.modal.endpoint.textContent = `${window.location.origin}${apiData.path?.split("?")[0] || ""}`
+  if (DOM.modal.content) DOM.modal.content.innerHTML = ""
 
-    DOM.modal.queryInputContainer.innerHTML = ""
+  // Hide spinner, response container
+  DOM.modal.spinner?.classList.add("d-none")
+  DOM.modal.content?.classList.add("d-none")
+  DOM.modal.container?.classList.add("d-none")
+  DOM.modal.endpoint?.classList.remove("d-none")
+
+  // Clear inputs
+  DOM.modal.queryInputContainer?.innerHTML = ""
+  if (DOM.modal.submitBtn) {
     DOM.modal.submitBtn.classList.add("d-none")
     DOM.modal.submitBtn.disabled = true
     DOM.modal.submitBtn.innerHTML = '<span>Send</span><i class="fas fa-paper-plane ms-2" aria-hidden="true"></i>'
+  }
 
-    // Hide all footer buttons initially
-    const editParamsBtn = DOM.modal.element.querySelector(".edit-params-btn")
-    const downloadImageBtn = DOM.modal.element.querySelector(".download-image-btn")
-    const shareApiBtn = DOM.modal.element.querySelector(".share-api-btn")
-    if (editParamsBtn) editParamsBtn.style.display = "none"
-    if (downloadImageBtn) downloadImageBtn.style.display = "none"
-    if (shareApiBtn) shareApiBtn.style.display = "none"
+  // Footer buttons
+  const editParamsBtn = DOM.modal.element.querySelector(".edit-params-btn")
+  const downloadImageBtn = DOM.modal.element.querySelector(".download-image-btn")
+  const shareApiBtn = DOM.modal.element.querySelector(".share-api-btn")
 
-    // Create share button if it doesn't exist
-    if (!shareApiBtn) {
-      const newShareBtn = document.createElement("button")
-      newShareBtn.className = "btn btn-info me-2 share-api-btn"
-      newShareBtn.innerHTML = '<i class="fas fa-share-alt me-2"></i> Share API'
-      newShareBtn.onclick = handleShareApi
+  if (editParamsBtn) editParamsBtn.style.display = "none"
+  if (downloadImageBtn) downloadImageBtn.style.display = "none"
+  if (shareApiBtn) shareApiBtn.style.display = "none"
 
-      // Insert the share button in the modal footer
-      const modalFooter = DOM.modal.element.querySelector(".modal-footer")
+  // Create share button only if it doesn't exist
+  if (!shareApiBtn) {
+    const newShareBtn = document.createElement("button")
+    newShareBtn.className = "btn btn-info me-2 share-api-btn"
+    newShareBtn.innerHTML = '<i class="fas fa-share-alt me-2"></i> Share API'
+    newShareBtn.onclick = handleShareApi
+
+    const modalFooter = DOM.modal.element.querySelector(".modal-footer")
+    if (modalFooter && DOM.modal.submitBtn) {
       modalFooter.insertBefore(newShareBtn, DOM.modal.submitBtn)
     }
+  }
+  }
 
     // Always show share button when modal opens
     const shareBtn = DOM.modal.element.querySelector(".share-api-btn")
