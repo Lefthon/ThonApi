@@ -806,7 +806,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       modalFooter.insertBefore(newShareBtn, DOM.modal.submitBtn)
     }
   }
-  }
+  
 
     // Always show share button when modal opens
     const shareBtn = DOM.modal.element.querySelector(".share-api-btn")
