@@ -1,52 +1,61 @@
-/* Modern API Documentation Styles */
+/* ========== Modern API UI Theme: ThonAPI Style ========== */
 :root {
-  --primary: #4361ee;
-  --primary-light: #4895ef;
-  --secondary: #3f37c9;
-  --accent: #f72585;
+  --primary: #4c6ef5;
+  --primary-light: #5c7cfa;
+  --secondary: #4263eb;
+  --accent: #9775fa;
   --dark: #1a1a2e;
   --light: #f8f9fa;
-  --success: #4cc9f0;
-  --warning: #f8961e;
-  --danger: #ef233c;
-  --gray: #6c757d;
+  --success: #38d9a9;
+  --warning: #fab005;
+  --danger: #fa5252;
+  --gray: #868e96;
   --gray-light: #e9ecef;
+  --background: #f9fbff;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* Base Styles */
+/* ========== Base Styles ========== */
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background-color: #f8f9fa;
+  background-color: var(--background);
   color: var(--dark);
-  line-height: 1.6;
   margin: 0;
   padding: 0;
+  line-height: 1.7;
+  font-size: 16px;
 }
 
-/* Layout Structure */
+/* ========== Layout ========== */
 .main-wrapper {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 260px 1fr;
   min-height: 100vh;
+  background: var(--background);
 }
 
+/* ========== Sidebar ========== */
 .side-nav {
   background: #fff;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  border-right: 1px solid var(--gray-light);
+  padding: 2rem 1.5rem;
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-/* Navigation Styles */
 .side-nav-logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--primary);
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
   border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 1.2rem;
 }
 
 .side-nav-links {
@@ -56,53 +65,63 @@ body {
 }
 
 .side-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--gray);
   padding: 0.75rem 1rem;
   border-radius: 8px;
-  color: var(--gray);
-  text-decoration: none;
-  transition: all 0.2s ease;
+  transition: 0.2s ease;
 }
 
-.side-nav-link:hover {
-  background-color: rgba(67, 97, 238, 0.1);
-  color: var(--primary);
-}
-
+.side-nav-link:hover,
 .side-nav-link.active {
-  background-color: rgba(67, 97, 238, 0.1);
-  color: var(--primary);
+  background-color: var(--primary-light);
+  color: white;
   font-weight: 500;
 }
 
-/* Header Styles */
+/* ========== Header ========== */
 .main-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  align-items: center;
+  padding: 1.2rem 2rem;
   background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: var(--card-shadow);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 }
 
+/* ========== Search ========== */
 .search-container {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 }
 
-/* Hero Section */
+.search-container input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray-light);
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(76, 110, 245, 0.2);
+}
+
+/* ========== Hero ========== */
 .hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #f5f7ff 0%, #e8ebff 100%);
+  padding: 3rem 2rem 2rem;
+  background: linear-gradient(135deg, #f1f3ff, #e0e7ff);
   border-radius: 0 0 20px 20px;
-  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .hero-content {
@@ -110,39 +129,43 @@ body {
 }
 
 .hero-heading {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--primary);
 }
 
-/* API Cards */
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+}
+
+/* ========== API Cards ========== */
 .api-section {
-  padding: 0 2rem 2rem;
+  padding: 2rem;
 }
 
 .api-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
 }
 
 .api-card {
   background: #fff;
+  border-left: 4px solid var(--primary);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  border-left: 4px solid var(--primary);
+  box-shadow: var(--card-shadow);
+  transition: 0.3s ease;
 }
 
 .api-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(76, 110, 245, 0.15);
 }
 
-/* Modal Styles */
+/* ========== Modal ========== */
 .modal-content {
   border-radius: 12px;
   overflow: hidden;
@@ -152,37 +175,73 @@ body {
 .modal-header {
   background: var(--primary);
   color: white;
+  padding: 1rem 1.5rem;
 }
 
-/* Code Blocks */
+/* ========== Code Block ========== */
 .code-block {
   background: #1e1e2e;
-  color: #f8f8f2;
+  color: #eaeaea;
+  font-family: 'Fira Code', monospace;
   padding: 1rem;
   border-radius: 8px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.9rem;
   overflow-x: auto;
+  font-size: 0.9rem;
 }
 
-/* Buttons */
+/* ========== Buttons ========== */
 .btn-primary {
   background-color: var(--primary);
+  color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
-  color: white;
   font-weight: 500;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
   background-color: var(--secondary);
+  box-shadow: 0 4px 12px rgba(66, 99, 235, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
 }
 
-/* Loading Animation */
+/* ========== Utilities ========== */
+.badge-pill {
+  background-color: var(--primary-light);
+  color: white;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ========== Animations ========== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -192,83 +251,151 @@ body {
   stroke: var(--primary);
 }
 
-/* Responsive Design */
+/* ========== Responsive ========== */
 @media (max-width: 992px) {
   .main-wrapper {
     grid-template-columns: 1fr;
   }
-  
+
   .side-nav {
     position: fixed;
-    width: 280px;
-    height: 100vh;
+    left: 0;
+    top: 0;
     transform: translateX(-100%);
+    width: 260px;
+    z-index: 999;
+    height: 100%;
+    background: white;
+    box-shadow: var(--card-shadow);
     transition: transform 0.3s ease;
-    z-index: 1000;
   }
-  
+
   .side-nav.active {
     transform: translateX(0);
   }
-  
-  .main-header {
-    padding: 1rem;
-  }
-  
-  .search-container {
-    width: 100%;
-    max-width: 400px;
-  }
-  
+
   .hero-section {
     flex-direction: column;
     text-align: center;
-    padding: 3rem 1rem;
   }
-  
+
   .hero-content {
     margin-bottom: 2rem;
   }
+
+  .main-header {
+    padding: 1rem;
+  }
+  }
+   /* ===== Global Transitions & Hover Effects ===== */
+* {
+  transition: all 0.3s ease;
+  scroll-behavior: smooth;
 }
 
-/* Utility Classes */
-.badge-pill {
-  background-color: var(--primary-light);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 500;
+/* ===== Smooth Hover Glow ===== */
+.api-card:hover,
+.btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(76, 110, 245, 0.25), 0 0 0 2px rgba(76, 110, 245, 0.1);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* ===== Link Hover Underline Animation ===== */
+a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
 }
 
-/* Animation Classes */
-.fade-in {
-  animation: fadeIn 0.5s ease-in;
+a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+a:hover::after {
+  width: 100%;
 }
 
-.slide-up {
-  animation: slideUp 0.4s ease-out;
+/* ===== Scale-In on Hover (Card Pop Effect) ===== */
+.api-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-@keyframes slideUp {
-  from { 
-    opacity: 0;
+.api-card:hover {
+  transform: scale(1.025);
+}
+
+/* ===== Animated Scroll Entry ===== */
+.animated-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animated-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Slide + Fade Combo ===== */
+.slide-fade {
+  animation: slideFadeIn 0.7s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideFadeIn {
+  from {
     transform: translateY(20px);
+    opacity: 0;
   }
-  to { 
-    opacity: 1;
+  to {
     transform: translateY(0);
+    opacity: 1;
   }
+}
+
+/* ===== Shimmer Effect (Optional: for loading or cool text) ===== */
+.shimmer {
+  background: linear-gradient(
+    to right,
+    #f0f0f0 8%,
+    #e0e0e0 18%,
+    #f0f0f0 33%
+  );
+  background-size: 800px 104px;
+  animation: shimmer 2s infinite linear;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@keyframes shimmer {
+  0% { background-position: -800px 0; }
+  100% { background-position: 800px 0; }
+}
+
+/* ===== Button Pulse on Hover ===== */
+.btn-primary:hover {
+  animation: pulseBtn 0.4s ease;
+}
+
+@keyframes pulseBtn {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Spinner Glow Animation ===== */
+.spinner-animation {
+  animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 4px var(--primary)); }
+  to { filter: drop-shadow(0 0 10px var(--primary)); }
 }
