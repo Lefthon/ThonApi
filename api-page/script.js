@@ -1576,20 +1576,8 @@ function validateModalInputs() {
   DOM.modal.submitBtn.disabled = !allValid;
 }
 
-/**
- * Submit API request from modal
- */
-async function submitApiRequest() {
-  if (!STATE.currentApi) return;
+
   
-  try {
-    // Show loading state
-    DOM.modal.spinner.classList.remove("d-none");
-    DOM.modal.submitBtn.disabled = true;
-    DOM.modal.submitBtn.innerHTML = `
-      <span class="spinner-border spinner-border-sm me-2"></span>
-      Processing...
-    `;
     
     // Get parameters
     const params = {};
@@ -1672,16 +1660,7 @@ function debounce(func, delay) {
   };
 }
 
-/**
- * Hide loading screen
- */
-function hideLoadingScreen() {
-  DOM.loadingScreen.classList.add("fade-out");
-  setTimeout(() => {
-    DOM.loadingScreen.style.display = "none";
-    DOM.body.classList.remove("no-scroll");
-  }, CONFIG.LOADING_DELAY);
-}
+
 
 // ======================
 // Sample Data (Fallback)
