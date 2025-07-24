@@ -1023,5 +1023,92 @@ body.dark-mode .toast-body {
   
   .footer-links {
     grid-template-columns: 1fr;
+
+    
+/* ===== API List Styles ===== */
+.api-section {
+  margin: 2rem 0;
+}
+
+.api-endpoint {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--primary);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.api-endpoint:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.api-description {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.method-get {
+  display: inline-block;
+  background-color: #e6f7ff;
+  color: #1890ff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--border);
+  margin: 2rem 0;
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light: #1a1a2e;
+    --dark: #f8f9fa;
+    --text: #f8f9fa;
+    --text-light: #adb5bd;
+    --border: rgba(255, 255, 255, 0.1);
+  }
+  
+  body {
+    background-color: var(--light);
+  }
+  
+  .api-endpoint {
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .method-get {
+    background-color: rgba(24, 144, 255, 0.2);
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .api-endpoint {
+    padding: 1rem;
+  }
+  
   }
   }
